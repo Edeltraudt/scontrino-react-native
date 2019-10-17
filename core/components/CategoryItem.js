@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, View, Text, TouchableHighlight } from 'react-native';
 import CategoryIcon from './CategoryIcon';
+import * as styleConfig from '../style';
 
 export default class CategoryItem extends React.Component {
   handlePress = (key, color, colorText) => {
@@ -28,7 +29,7 @@ export default class CategoryItem extends React.Component {
             (fullWidth ? styles.category_full : {}),
             (fixed ? styles.category_fixed : {}),
           ]}
-          underlayColor='#EEE'
+          underlayColor={styleConfig.COLOR_BASE_FOCUS}
           onPress={() => this.handlePress(code, color, colorText)}
           disabled={fixed}>
         <>
@@ -55,17 +56,17 @@ export default class CategoryItem extends React.Component {
 
 const styles = StyleSheet.create({
   category: {
-    backgroundColor: '#FFF',
-    borderRadius: 16,
-    paddingLeft: 16,
-    paddingRight: 11,
-    paddingVertical: 16,
+    backgroundColor: styleConfig.COLOR_BASE,
+    borderRadius: styleConfig.BORDER_RADIUS,
+    paddingLeft: styleConfig.SPACING_BASE,
+    paddingRight: styleConfig.SPACING_SMALL,
+    paddingVertical: styleConfig.SPACING_BASE,
   },
   category_full: {
     alignItems: 'center',
     flexDirection: 'row',
-    marginVertical: 12,
-    paddingVertical: 30,
+    marginVertical: styleConfig.SPACING_SMALL,
+    paddingVertical: styleConfig.SPACING_LARGE,
   },
   category_fixed: {
     paddingVertical: 0,
@@ -74,31 +75,28 @@ const styles = StyleSheet.create({
   },
 
   categoryTitle: {
-    color: '#303B67',
-    fontWeight: '600',
-    fontSize: 20,
+    color: styleConfig.COLOR_TEXT,
+    fontFamily: styleConfig.FONT_FAMILY_BOLD,
+    fontSize: styleConfig.FONT_SIZE_BASE,
   },
   categoryTitle_fixed: {
-    color: '#303B67',
-    fontWeight: '600',
-    fontSize: 22,
+    fontSize: styleConfig.FONT_SIZE_BASE * 1.1,
   },
 
   categoryLabel: {
-    color: '#303B67',
-    fontSize: 15,
+    color: styleConfig.COLOR_TEXT,
+    fontSize: styleConfig.FONT_SIZE_SMALL,
   },
   categoryLabel_fixed: {
-    color: '#303B67',
-    fontSize: 17,
+    fontSize: styleConfig.FONT_SIZE_SMALL * 1.125,
   },
 
   categoryHelp: {
-    color: '#7E8291',
-    fontSize: 11.5,
-    marginTop: 8,
+    color: styleConfig.COLOR_TEXT_SOFT,
+    fontSize: styleConfig.FONT_SIZE_XXSMALL,
+    marginTop: styleConfig.FONT_SIZE_XXSMALL * 0.75,
   },
   categoryHelp_fixed: {
-    fontSize: 13,
+    fontSize: styleConfig.FONT_SIZE_XSMALL,
   },
 });

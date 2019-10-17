@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
+import * as styleConfig from '../style';
 
 export default class Tag extends React.Component {
   handlePress = (title) => {
@@ -20,20 +21,22 @@ export default class Tag extends React.Component {
   }
 }
 
+const fontSize = styleConfig.FONT_SIZE_SMALL;
+
 const styles = StyleSheet.create({
   tag: {
     backgroundColor: '#22222222',
-    borderRadius: 8,
-    marginBottom: 6,
-    marginRight: 6,
-    paddingHorizontal: 18,
-    paddingTop: 12,
-    paddingBottom: 11,
+    borderRadius: styleConfig.BORDER_RADIUS_S * 0.75,
+    marginBottom: fontSize * 0.375,
+    marginRight: fontSize * 0.375,
+    paddingHorizontal: fontSize * 1.125,
+    paddingTop: fontSize * 0.75,
+    paddingBottom: fontSize * 0.6875,
   },
   text: {
     color: '#222222AA',
-    fontSize: 16,
-    lineHeight: 16,
+    fontSize,
+    lineHeight: fontSize,
     textAlign: 'center'
   },
 });

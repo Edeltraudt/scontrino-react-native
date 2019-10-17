@@ -1,6 +1,9 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
+import { moderateScale } from 'react-native-size-matters';
+
 import categories from '../../categories';
+import * as styleConfig from '../style';
 
 export default class CategoryIcon extends React.Component {
   render() {
@@ -20,22 +23,26 @@ export default class CategoryIcon extends React.Component {
   }
 }
 
+const sizeS = moderateScale(42);
+const sizeM = moderateScale(50);
+const sizeL = moderateScale(58);
+
 const styles = StyleSheet.create({
   icon: {
-    backgroundColor: '#F6F6F6',
+    backgroundColor: styleConfig.COLOR_BASE_SOFT,
     borderRadius: 12,
-    height: 48,
-    marginBottom: 12,
-    width: 48,
+    height: sizeS,
+    marginBottom: sizeS * 0.25,
+    width: sizeS,
   },
   fullIcon: {
-    height: 56,
+    height: sizeM,
     marginBottom: 0,
-    marginRight: 24,
-    width: 56,
+    marginRight: sizeM * 0.5,
+    width: sizeM,
   },
   fixedIcon: {
-    height: 64,
-    width: 64,
+    height: sizeL,
+    width: sizeL,
   }
 });

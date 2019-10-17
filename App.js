@@ -1,8 +1,9 @@
 import React from 'react';
-import { Animated, Dimensions, Keyboard, StyleSheet, Text, TextInput, UIManager } from 'react-native';
+import { Animated, Dimensions, Keyboard, StyleSheet, Text, StatusBar, TextInput, UIManager } from 'react-native';
 import * as Font from 'expo-font';
 
 import NewExpenseView from './core/views/NewExpenseView';
+import { COLOR_BASE_SOFT } from './core/style';
 
 const { State: TextInputState } = TextInput;
 
@@ -19,7 +20,7 @@ export default class App extends React.Component {
     this.keyboardDidShowSub = Keyboard.addListener('keyboardDidShow', this.handleKeyboardDidShow);
     this.keyboardDidHideSub = Keyboard.addListener('keyboardDidHide', this.handleKeyboardDidHide);
     await Font.loadAsync({
-      'IBMPlexSans': require('./assets/fonts/IBMPlexSans.ttf'),
+      'IBMPlexSans-Light': require('./assets/fonts/IBMPlexSans-Light.ttf'),
       'IBMPlexSans-SemiBold': require('./assets/fonts/IBMPlexSans-SemiBold.ttf'),
     });
     this.setState({ isLoading: false });
@@ -35,6 +36,7 @@ export default class App extends React.Component {
 
     return !this.state.isLoading
       ? <Animated.View style={[styles.view, {transform: [{translateY: shift}]}]}>
+          <StatusBar barStyle='light-content' />
           <NewExpenseView />
         </Animated.View>
       : <><Text>Loading</Text></>;
@@ -76,7 +78,7 @@ export default class App extends React.Component {
 
 const styles = StyleSheet.create({
   view: {
-    backgroundColor: '#F6F6F6',
+    backgroundColor: COLOR_BASE_SOFT,
     flex: 1,
   },
 });

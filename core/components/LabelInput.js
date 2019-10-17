@@ -3,6 +3,7 @@ import { StyleSheet, TextInput, View } from 'react-native';
 
 import TagList from './TagList';
 import AppButton from './AppButton';
+import * as styleConfig from '../style';
 
 export default class LabelInput extends React.Component {
   constructor(props) {
@@ -37,7 +38,7 @@ export default class LabelInput extends React.Component {
       <View style={style}>
         <TextInput style={[styles.input, (fixed ? styles.input_fixed : {})]}
           placeholder={!fixed ? 'What is this expense for?' : ''}
-          placeholderTextColor='#abadb6'
+          placeholderTextColor={styleConfig.COLOR_PLACEHOLDER}
           editable={!fixed}
           onChangeText={this.handleInput}
           value={!fixed ? this.state.label : this.props.value} />
@@ -59,19 +60,19 @@ export default class LabelInput extends React.Component {
 
 const styles = StyleSheet.create({
   input: {
-    color: '#303B67',
-    fontSize: 28,
-    fontWeight: '600',
-    marginTop: -16,
-    marginBottom: 16,
-    paddingVertical: 10,
+    color: styleConfig.COLOR_TEXT,
+    fontSize: styleConfig.FONT_SIZE_XLARGE,
+    fontFamily: styleConfig.FONT_FAMILY_BOLD,
+    marginTop: styleConfig.SPACING_BASE * -1,
+    marginBottom: styleConfig.SPACING_BASE * 1.25,
+    paddingVertical: styleConfig.SPACING_BASE,
   },
   input_fixed: {
-    borderTopColor: '#CCC',
+    borderTopColor: styleConfig.COLOR_BORDER,
     borderTopWidth: StyleSheet.hairlineWidth,
     marginBottom: 4,
-    marginTop: 15,
-    paddingTop: 18,
+    marginTop: styleConfig.SPACING_BASE,
+    paddingTop: styleConfig.SPACING_BASE,
   },
 
   button: {

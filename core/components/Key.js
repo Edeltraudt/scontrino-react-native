@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, View, Text, TouchableHighlight } from 'react-native';
 import { moderateScale } from 'react-native-size-matters';
+import * as styleConfig from '../style';
 
 export default class Key extends React.Component {
   handlePress = (value) => {
@@ -15,7 +16,7 @@ export default class Key extends React.Component {
     return (<View style={style}>
       <TouchableHighlight
         onPress={() => this.handlePress(value)}
-        underlayColor='#EEE'
+        underlayColor={styleConfig.COLOR_BASE_FOCUS}
         style={styles.key}>
         <Text style={styles.keyText}>{title ? title : value}</Text>
       </TouchableHighlight>
@@ -26,14 +27,14 @@ export default class Key extends React.Component {
 const styles = StyleSheet.create({
   key: {
     alignItems: 'center',
-    backgroundColor: '#F6F6F6',
-    borderRadius: 16,
+    backgroundColor: styleConfig.COLOR_BASE_SOFT,
+    borderRadius: styleConfig.BORDER_RADIUS,
     display: 'flex',
     justifyContent: 'center',
     aspectRatio: 1.05,
   },
   keyText: {
-    fontSize: moderateScale(20, 0.5),
-    fontWeight: '600'
+    fontSize: moderateScale(20),
+    fontFamily: styleConfig.FONT_FAMILY_BOLD,
   },
 });

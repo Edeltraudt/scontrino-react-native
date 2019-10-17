@@ -1,5 +1,11 @@
 import React from 'react';
 import { StyleSheet, View, Text, TouchableHighlight } from 'react-native';
+import * as styleConfig from '../style';
+
+export const AppButtonType = Object.freeze({
+  default: 0,
+  soft: 1,
+});
 
 export default class AppButton extends React.Component {
   handlePress = () => {
@@ -14,13 +20,15 @@ export default class AppButton extends React.Component {
     return (<View style={style}>
       <TouchableHighlight style={[
             styles.button,
-            type === 'soft' ? styles.button_soft : {},
+            type === AppButtonType.soft ? styles.button_soft : {},
           ]}
           onPress={this.handlePress}
-          underlayColor={type === 'soft' ? '#F0F0F0' : '#000'}>
+          underlayColor={type === AppButtonType.soft
+            ? styleConfig.COLOR_BASE_FOCUS
+            : styleConfig.COLOR_INV_BASE_FOCUS}>
         <Text style={[
             styles.text,
-            type === 'soft' ? styles.text_soft : {},
+            type === AppButtonType.soft ? styles.text_soft : {},
           ]}>{title}</Text>
       </TouchableHighlight>
     </View>);
@@ -29,22 +37,22 @@ export default class AppButton extends React.Component {
 
 const styles = StyleSheet.create({
   button: {
-    backgroundColor: '#222222',
-    borderRadius: 12,
-    paddingTop: 16,
-    paddingBottom: 18,
+    backgroundColor: styleConfig.COLOR_INV_BASE,
+    borderRadius: styleConfig.BORDER_RADIUS_S,
+    paddingTop: styleConfig.FONT_SIZE_BASE * 0.875,
+    paddingBottom: styleConfig.FONT_SIZE_BASE * 0.9,
   },
   text: {
-    color: '#FFFFFF',
-    fontSize: 20,
-    fontWeight: '600',
+    color: styleConfig.COLOR_INV_TEXT,
+    fontFamily: styleConfig.FONT_FAMILY_BOLD,
+    fontSize: styleConfig.FONT_SIZE_BASE,
     textAlign: 'center'
   },
 
   button_soft: {
-    backgroundColor: '#FFF',
+    backgroundColor: styleConfig.COLOR_BASE,
   },
   text_soft: {
-    color: '#7E8291',
+    color: styleConfig.COLOR_TEXT_SOFT,
   },
 });

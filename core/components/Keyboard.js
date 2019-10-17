@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import Key from './Key';
+import { SPACING_SMALL } from '../style';
 
 export default class Keyboard extends React.Component {
   constructor(props) {
@@ -90,7 +91,7 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     flex: 1,
     justifyContent: 'space-between',
-    marginTop: -8,
+    marginTop: SPACING_SMALL * -1,
   },
   keyboardRow: {
     display: 'flex',
@@ -100,6 +101,6 @@ const styles = StyleSheet.create({
   key: {
     flex: 0,
     flexBasis: '26%',
-    marginVertical: 8,
+    marginVertical: SPACING_SMALL,
   },
 });

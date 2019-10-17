@@ -1,6 +1,7 @@
 import React from 'react';
-import { StyleSheet, View, Text, TouchableHighlight } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import Tag from './Tag';
+import * as styleConfig from '../style';
 
 const mockData = [
   'Gym', 'Gift', 'Language Class', 'Clothes', 'Cinema', 'Coffee',
@@ -34,11 +35,5 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     flexWrap: 'wrap',
-  },
-  text: {
-    color: '#FFFFFF',
-    fontSize: 20,
-    fontWeight: '600',
-    textAlign: 'center'
   },
 });

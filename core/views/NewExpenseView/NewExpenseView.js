@@ -9,8 +9,10 @@ import CategorySelect from './../../../core/components/CategorySelect';
 import CategoryItem from './../../../core/components/CategoryItem';
 import LabelInput from './../../../core/components/LabelInput';
 import ExpenseInput from './../../../core/components/ExpenseInput';
-import AppButton from './../../../core/components/AppButton';
+import AppButton, { AppButtonType } from './../../../core/components/AppButton';
 import categories from '../../../categories';
+
+import * as styleConfig from '../../style';
 
 export default class NewExpenseView extends React.Component {
   constructor(props) {
@@ -25,10 +27,10 @@ export default class NewExpenseView extends React.Component {
       date: new Date(),   // user input
 
       // category theming in default state (neutral black)
-      color: '#1F1F1F',
-      colorText: '#FFFFFF',
-      colorLabel: '#F6F6F6',
-      colorLabelText: '#AAAAAA',
+      color: styleConfig.COLOR_INV_BASE,
+      colorText: styleConfig.COLOR_INV_TEXT,
+      colorLabel: styleConfig.COLOR_BASE_SOFT,
+      colorLabelText: styleConfig.COLOR_PLACEHOLDER,
     };
   }
 
@@ -80,7 +82,7 @@ export default class NewExpenseView extends React.Component {
 
         <SafeAreaView>
           <AppButton title='Continue'
-            style={{ marginTop: 36 }}
+            style={{ marginTop: styleConfig.SPACING_LARGE }}
             onPress={this.handleNext} />
         </SafeAreaView>
       </View>;
@@ -117,17 +119,17 @@ export default class NewExpenseView extends React.Component {
             {/* date options */}
             <View style={styles.buttonGroup}>
               <AppButton title='Today' style={{ flex: 2 }}
-                type={!isToday(this.state.date) ? 'soft' : ''}
+                type={!isToday(this.state.date) ? AppButtonType.soft : ''}
                 onPress={() => this.setState({ date: new Date() })} />
 
               <AppButton title='Select Date' style={{ flex: 3, marginLeft: 10 }}
-                type={isToday(this.state.date) ? 'soft' : ''}
+                type={isToday(this.state.date) ? AppButtonType.soft : ''}
                 onPress={this.handleDateChange} />
             </View>
 
             {/* add attachments */}
             <View style={styles.buttonGroup}>
-              <AppButton title='Attachment' type='soft' style={{ flex: 1 }} />
+              <AppButton title='Attachment' type={AppButtonType.soft} style={{ flex: 1 }} />
             </View>
 
             {/* notes input field */}
@@ -136,7 +138,7 @@ export default class NewExpenseView extends React.Component {
                 value={this.state.notes}
                 onChangeText={this.handleNotesChange}
                 placeholder='Notes'
-                placeholderTextColor='#abadb6' />
+                placeholderTextColor={styleConfig.COLOR_PLACEHOLDER} />
             </View>
 
             <SafeAreaView style={{ marginTop: 'auto' }}>
@@ -153,7 +155,7 @@ export default class NewExpenseView extends React.Component {
     const { color, colorText, step } = this.state;
 
     return <View style={styles.wrap} backgroundColor={color}>
-      <StatusBar backgroundColor={color} />
+      <StatusBar barStyle='light-content' />
       <Header title='New Expense' color={colorText} />
       <ExpenseInput value={expense} colorText={colorText} small={(step >= 3)} />
 
@@ -169,37 +171,37 @@ const styles = StyleSheet.create({
   },
 
   buttonGroup: {
-    flexDirection: 'row',
-    marginBottom: 28,
-    marginTop: -8,
-    paddingBottom: 20,
-    borderBottomColor: '#BBB',
+    borderBottomColor: styleConfig.COLOR_BORDER_SOFT,
     borderBottomWidth: StyleSheet.hairlineWidth,
+    flexDirection: 'row',
+    marginBottom: styleConfig.SPACING_LARGE,
+    marginTop: styleConfig.SPACING_SMALL * -1,
+    paddingBottom: styleConfig.SPACING_MEDIUM,
   },
 
   notes: {
 
   },
   notesInput: {
-    fontSize: 18,
+    fontSize: styleConfig.FONT_SIZE_BASE,
     width: '100%',
   },
 
 
   content: {
-    backgroundColor: '#F6F6F6',
-    borderTopLeftRadius: 32,
+    backgroundColor: styleConfig.COLOR_BASE_SOFT,
+    borderTopLeftRadius: styleConfig.BORDER_RADIUS_L,
     flex: 1,
-    padding: 32,
+    padding: styleConfig.BORDER_RADIUS_L,
   },
   content_auto: {
     flex: 0,
-    marginBottom: -32,
-    paddingBottom: 32 + 8,
-    paddingTop: 8,
+    marginBottom: styleConfig.BORDER_RADIUS_L * -1,
+    paddingBottom: styleConfig.BORDER_RADIUS_L + styleConfig.SPACING_SMALL,
+    paddingTop: styleConfig.SPACING_SMALL,
   },
   content_soft: {
-    backgroundColor: '#FFF',
+    backgroundColor: styleConfig.COLOR_BASE,
   },
 
 });
