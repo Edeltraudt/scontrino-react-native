@@ -1,5 +1,5 @@
 import React from 'react';
-import { Animated, Dimensions, Keyboard, StyleSheet, TextInput, UIManager } from 'react-native';
+import { Animated, Dimensions, Keyboard, StyleSheet, Text, TextInput, UIManager } from 'react-native';
 import * as Font from 'expo-font';
 
 import NewExpenseView from './core/views/NewExpenseView';
@@ -10,22 +10,19 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isLoaded: true,
+      isLoading: true,
       shift: new Animated.Value(0),
     };
   }
 
-  componentWillMount = () => {
+  componentWillMount = async () => {
     this.keyboardDidShowSub = Keyboard.addListener('keyboardDidShow', this.handleKeyboardDidShow);
     this.keyboardDidHideSub = Keyboard.addListener('keyboardDidHide', this.handleKeyboardDidHide);
-  }
-
-  componentDidMount = async () => {
     await Font.loadAsync({
-      'ibm-plex-sans': require('./assets/fonts/IBMPlexSans-Regular.ttf'),
-      'ibm-plex-sans-bold': require('./assets/fonts/IBMPlexSans-SemiBold.ttf'),
+      'IBMPlexSans': require('./assets/fonts/IBMPlexSans.ttf'),
+      'IBMPlexSans-SemiBold': require('./assets/fonts/IBMPlexSans-SemiBold.ttf'),
     });
-    this.setState({ isLoaded: true });
+    this.setState({ isLoading: false });
   }
 
   componentWillUnmount() {
@@ -35,11 +32,12 @@ export default class App extends React.Component {
 
   render() {
     const {shift} = this.state;
-    return (
-      <Animated.View style={[styles.view, { transform: [{ translateY: shift }]}]}>
-        <NewExpenseView />
-      </Animated.View>
-    );
+
+    return !this.state.isLoading
+      ? <Animated.View style={[styles.view, {transform: [{translateY: shift}]}]}>
+          <NewExpenseView />
+        </Animated.View>
+      : <><Text>Loading</Text></>;
   }
 
   handleKeyboardDidShow = (event) => {
