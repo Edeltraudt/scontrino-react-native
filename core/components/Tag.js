@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
-import * as styleConfig from '../style';
+import { font, style } from '../style';
 
 export default class Tag extends React.Component {
   handlePress = (title) => {
@@ -21,12 +21,12 @@ export default class Tag extends React.Component {
   }
 }
 
-const fontSize = styleConfig.FONT_SIZE_SMALL;
+const fontSize = font.size.small;
 
 const styles = StyleSheet.create({
   tag: {
     backgroundColor: '#22222222',
-    borderRadius: styleConfig.BORDER_RADIUS_S * 0.75,
+    borderRadius: style.borderRadiusS * 0.75,
     marginBottom: fontSize * 0.375,
     marginRight: fontSize * 0.375,
     paddingHorizontal: fontSize * 1.125,

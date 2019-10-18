@@ -1,8 +1,7 @@
 import React from 'react';
 import { StyleSheet, View, Text, TextInput } from 'react-native';
+import { font, style } from '../style';
 import { moderateScale } from 'react-native-size-matters';
-
-import * as styleConfig from '../style';
 
 export default class ExpenseInput extends React.Component {
   render() {
@@ -31,12 +30,12 @@ export default class ExpenseInput extends React.Component {
 const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
-    aspectRatio: 2.8,
+    aspectRatio: moderateScale(3.75, -0.25), // 2.8
     justifyContent: 'center',
-    paddingBottom: styleConfig.FONT_SIZE_BASE,
+    paddingBottom: font.size.base,
   },
   container_small: {
-    aspectRatio: 4.2,
+    aspectRatio: moderateScale(5, -0.25), // 4.2
   },
   expense: {
     alignItems: 'center',
@@ -45,12 +44,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   input: {
-    fontSize: styleConfig.FONT_SIZE_EXPENSE,
-    fontFamily: styleConfig.FONT_FAMILY_BOLD,
+    fontSize: font.size.expense,
+    fontFamily: font.family.bold,
   },
   currency: {
-    fontSize: styleConfig.FONT_SIZE_EXPENSE,
-    fontFamily: styleConfig.FONT_FAMILY,
-    opacity: styleConfig.OPACITY_SOFT,
+    fontSize: font.size.expense,
+    fontFamily: font.family.base,
+    opacity: style.opacitySoft,
   },
 });

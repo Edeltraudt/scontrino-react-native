@@ -1,6 +1,6 @@
 import React from 'react';
 import { SafeAreaView, View, StyleSheet, Text } from 'react-native';
-import * as styleConfig from '../style';
+import { style, spacing, colors, font } from '../style';
 
 export default class Header extends React.Component {
   render() {
@@ -18,15 +18,15 @@ export default class Header extends React.Component {
 
 const styles = StyleSheet.create({
   header: {
-    opacity: styleConfig.OPACITY_SOFT,
-    paddingHorizontal: styleConfig.SPACING_MEDIUM,
-    paddingVertical: styleConfig.SPACING_BASE,
+    opacity: style.opacitySoft,
+    paddingHorizontal: spacing.medium,
+    paddingVertical: spacing.base,
     position: 'relative',
   },
   headerText: {
-    color: styleConfig.COLOR_INV_TEXT,
-    fontSize: styleConfig.FONT_SIZE_SMALL,
-    fontFamily: styleConfig.FONT_FAMILY_BOLD,
+    color: colors.invText,
+    fontSize: font.size.small,
+    fontFamily: font.family.bold,
     textAlign: 'center',
   },
 });

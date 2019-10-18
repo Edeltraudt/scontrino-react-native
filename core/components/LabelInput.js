@@ -3,7 +3,7 @@ import { StyleSheet, TextInput, View } from 'react-native';
 
 import TagList from './TagList';
 import AppButton from './AppButton';
-import * as styleConfig from '../style';
+import { colors, font, spacing } from '../style';
 
 export default class LabelInput extends React.Component {
   constructor(props) {
@@ -22,7 +22,11 @@ export default class LabelInput extends React.Component {
   }
 
   handleInput = (value) => {
-    this.setState({label: value});
+    this.setState({ label: value });
+
+    if (this.props.onChange) {
+      this.props.onChange(value);
+    }
   }
 
   handleButtonPress = () => {
@@ -38,7 +42,7 @@ export default class LabelInput extends React.Component {
       <View style={style}>
         <TextInput style={[styles.input, (fixed ? styles.input_fixed : {})]}
           placeholder={!fixed ? 'What is this expense for?' : ''}
-          placeholderTextColor={styleConfig.COLOR_PLACEHOLDER}
+          placeholderTextColor={colors.placeholder}
           editable={!fixed}
           onChangeText={this.handleInput}
           value={!fixed ? this.state.label : this.props.value} />
@@ -60,19 +64,18 @@ export default class LabelInput extends React.Component {
 
 const styles = StyleSheet.create({
   input: {
-    color: styleConfig.COLOR_TEXT,
-    fontSize: styleConfig.FONT_SIZE_XLARGE,
-    fontFamily: styleConfig.FONT_FAMILY_BOLD,
-    marginTop: styleConfig.SPACING_BASE * -1,
-    marginBottom: styleConfig.SPACING_BASE * 1.25,
-    paddingVertical: styleConfig.SPACING_BASE,
+    color: colors.text,
+    fontSize: font.size.xlarge,
+    fontFamily: font.family.bold,
+    marginTop: spacing.base * -1,
+    marginBottom: spacing.base * 1.25,
+    paddingVertical: spacing.base,
   },
   input_fixed: {
-    borderTopColor: styleConfig.COLOR_BORDER,
+    borderTopColor: colors.border,
     borderTopWidth: StyleSheet.hairlineWidth,
     marginBottom: 4,
-    marginTop: styleConfig.SPACING_BASE,
-    paddingTop: styleConfig.SPACING_BASE,
+    marginTop: spacing.base * 1.625,
   },
 
   button: {

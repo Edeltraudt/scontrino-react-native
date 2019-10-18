@@ -3,7 +3,7 @@ import { StyleSheet, View } from 'react-native';
 import { moderateScale } from 'react-native-size-matters';
 
 import categories from '../../categories';
-import * as styleConfig from '../style';
+import { colors } from '../style';
 
 export default class CategoryIcon extends React.Component {
   render() {
@@ -29,7 +29,7 @@ const sizeL = moderateScale(58);
 
 const styles = StyleSheet.create({
   icon: {
-    backgroundColor: styleConfig.COLOR_BASE_SOFT,
+    backgroundColor: colors.base_soft,
     borderRadius: 12,
     height: sizeS,
     marginBottom: sizeS * 0.25,

@@ -1,18 +1,18 @@
 import React from 'react';
 import { StyleSheet, Text, TextInput, View, StatusBar, SafeAreaView } from 'react-native';
 
-import Header from './../../../core/layout/Header';
 import { isToday } from './../../../core/helpers';
+import categories from '../../../categories';
 
+import Header from './../../../core/layout/Header';
 import Keyboard from './../../../core/components/Keyboard';
 import CategorySelect from './../../../core/components/CategorySelect';
 import CategoryItem from './../../../core/components/CategoryItem';
 import LabelInput from './../../../core/components/LabelInput';
 import ExpenseInput from './../../../core/components/ExpenseInput';
 import AppButton, { AppButtonType } from './../../../core/components/AppButton';
-import categories from '../../../categories';
-
-import * as styleConfig from '../../style';
+import AppDatePicker from '../../components/DatePicker';
+import { spacing, colors, font, style } from '../../style';
 
 export default class NewExpenseView extends React.Component {
   constructor(props) {
@@ -27,10 +27,10 @@ export default class NewExpenseView extends React.Component {
       date: new Date(),   // user input
 
       // category theming in default state (neutral black)
-      color: styleConfig.COLOR_INV_BASE,
-      colorText: styleConfig.COLOR_INV_TEXT,
-      colorLabel: styleConfig.COLOR_BASE_SOFT,
-      colorLabelText: styleConfig.COLOR_PLACEHOLDER,
+      color: colors.invBase,
+      colorText: colors.invText,
+      colorLabel: colors.baseSoft,
+      colorLabelText: colors.placeholder,
     };
   }
 
@@ -82,7 +82,7 @@ export default class NewExpenseView extends React.Component {
 
         <SafeAreaView>
           <AppButton title='Continue'
-            style={{ marginTop: styleConfig.SPACING_LARGE }}
+            style={{ marginTop: spacing.large }}
             onPress={this.handleNext} />
         </SafeAreaView>
       </View>;
@@ -138,7 +138,7 @@ export default class NewExpenseView extends React.Component {
                 value={this.state.notes}
                 onChangeText={this.handleNotesChange}
                 placeholder='Notes'
-                placeholderTextColor={styleConfig.COLOR_PLACEHOLDER} />
+                placeholderTextColor={colors.placeholder} />
             </View>
 
             <SafeAreaView style={{ marginTop: 'auto' }}>
@@ -171,37 +171,37 @@ const styles = StyleSheet.create({
   },
 
   buttonGroup: {
-    borderBottomColor: styleConfig.COLOR_BORDER_SOFT,
+    borderBottomColor: colors.borderSoft,
     borderBottomWidth: StyleSheet.hairlineWidth,
     flexDirection: 'row',
-    marginBottom: styleConfig.SPACING_LARGE,
-    marginTop: styleConfig.SPACING_SMALL * -1,
-    paddingBottom: styleConfig.SPACING_MEDIUM,
+    marginBottom: spacing.large,
+    marginTop: spacing.small * -1,
+    paddingBottom: spacing.medium,
   },
 
   notes: {
 
   },
   notesInput: {
-    fontSize: styleConfig.FONT_SIZE_BASE,
+    fontSize: font.size.base,
     width: '100%',
   },
 
 
   content: {
-    backgroundColor: styleConfig.COLOR_BASE_SOFT,
-    borderTopLeftRadius: styleConfig.BORDER_RADIUS_L,
+    backgroundColor: colors.baseSoft,
+    borderTopLeftRadius: style.borderRadiusL,
     flex: 1,
-    padding: styleConfig.BORDER_RADIUS_L,
+    padding: spacing.box,
   },
   content_auto: {
     flex: 0,
-    marginBottom: styleConfig.BORDER_RADIUS_L * -1,
-    paddingBottom: styleConfig.BORDER_RADIUS_L + styleConfig.SPACING_SMALL,
-    paddingTop: styleConfig.SPACING_SMALL,
+    marginBottom: spacing.box * -1,
+    paddingBottom: spacing.box + spacing.small,
+    paddingTop: spacing.small,
   },
   content_soft: {
-    backgroundColor: styleConfig.COLOR_BASE,
+    backgroundColor: colors.base,
   },
 
 });
