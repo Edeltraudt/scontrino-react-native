@@ -15,13 +15,15 @@ export default class AppButton extends React.Component {
   }
 
   render() {
-    const { title, style, type } = this.props;
+    const { title, style, type, disabled } = this.props;
 
     return (<View style={style}>
       <TouchableHighlight style={[
             styles.button,
             type === AppButtonType.soft ? styles.button_soft : {},
+            disabled ? styles.disabled : {},
           ]}
+          disabled={disabled}
           onPress={this.handlePress}
           underlayColor={type === AppButtonType.soft
             ? colors.baseFocus
@@ -50,6 +52,10 @@ const styles = StyleSheet.create({
     fontFamily: font.family.bold,
     fontSize: font.size.base,
     textAlign: 'center'
+  },
+
+  disabled: {
+    opacity: style.opacitySoft,
   },
 
   button_soft: {
