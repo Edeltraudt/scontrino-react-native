@@ -1,15 +1,22 @@
 import React from 'react';
-import { SafeAreaView, View, StyleSheet, Text } from 'react-native';
+import { SafeAreaView, View, StyleSheet, TouchableOpacity, Text } from 'react-native';
 import { style, spacing, colors, font } from '../style';
+import Icon from '../components/Icon';
 
 export default class Header extends React.Component {
   render() {
+    const {title, onBack, notification } = this.props;
+
     return (
       <SafeAreaView>
         <View style={styles.header}>
-          <Text style={
-            [styles.headerText, {color: this.props.color || styleConfig.COLOR_}]
-          }>{this.props.title}</Text>
+          <TouchableOpacity onPress={onBack}>
+            <Text style={styles.headerIcon}>{'<'}</Text>
+            {/* <Icon name='arrow-left' size={style.iconSize.small} color={color} /> */}
+          </TouchableOpacity>
+          {notification &&
+            <Text style={styles.headerNotification}>{notification}</Text>}
+          <View style={[styles.headerIcon, styles.headerIcon_clone]} />
         </View>
       </SafeAreaView>
     )
@@ -18,15 +25,31 @@ export default class Header extends React.Component {
 
 const styles = StyleSheet.create({
   header: {
-    opacity: style.opacitySoft,
-    paddingHorizontal: spacing.medium,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    paddingHorizontal: spacing.container,
     paddingVertical: spacing.base,
-    position: 'relative',
+  },
+  headerIcon: {
+    color: colors.invText,
+    height: font.size.base,
+    width: font.size.base,
+  },
+  headerIcon_clone: {
+    opacity: 0,
   },
   headerText: {
     color: colors.invText,
     fontSize: font.size.small,
     fontFamily: font.family.bold,
     textAlign: 'center',
+  },
+  headerNotification: {
+    color: colors.invText,
+    fontSize: font.size.small,
+    fontFamily: font.family.bold,
+    textAlign: 'center',
+    textTransform: 'uppercase',
+    fontFamily: font.family.bold,
   },
 });

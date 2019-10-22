@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, Dimensions } from 'react-native';
 import Key from './Key';
 import { spacing } from '../style';
 
@@ -84,7 +84,7 @@ export default class Keyboard extends React.Component {
     </View>);
   }
 }
-
+const { width } = Dimensions.get('window');
 const styles = StyleSheet.create({
   keyboard: {
     display: 'flex',
@@ -97,7 +97,7 @@ const styles = StyleSheet.create({
     display: 'flex',
     justifyContent: 'space-between',
     flexDirection: 'row',
-    paddingHorizontal: spacing.small,
+    maxWidth: width * 0.9,
   },
   key: {
     flex: 0,

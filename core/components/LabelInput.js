@@ -40,24 +40,19 @@ export default class LabelInput extends React.Component {
 
     return <>
       <View style={style}>
-        <TextInput style={[styles.input, (fixed ? styles.input_fixed : {})]}
+        <TextInput style={[styles.input, fixed ? styles.input_fixed : {}]}
           placeholder={!fixed ? 'What is this expense for?' : ''}
           placeholderTextColor={colors.placeholder}
           editable={!fixed}
+          autoFocus={true}
           onChangeText={this.handleInput}
           value={!fixed ? this.state.label : this.props.value} />
       </View>
 
-      {!fixed && <>
+      {!fixed &&
         <TagList onChange={this.handleTagSelect}
           colorLabel={this.props.colorLabel}
-          colorLabelText={this.props.colorLabelText} />
-
-        <AppButton title={(this.state.label.trim().length > 0
-          ? 'Continue' : 'Skip')}
-          style={styles.button}
-          onPress={this.handleButtonPress} />
-      </>}
+          colorLabelText={this.props.colorLabelText} />}
     </>;
   }
 }
@@ -67,18 +62,9 @@ const styles = StyleSheet.create({
     color: colors.text,
     fontSize: font.size.xlarge,
     fontFamily: font.family.bold,
-    marginTop: spacing.base * -1,
-    marginBottom: spacing.base * 1.25,
-    paddingVertical: spacing.base,
+    marginBottom: spacing.large,
   },
   input_fixed: {
-    borderTopColor: colors.border,
-    borderTopWidth: StyleSheet.hairlineWidth,
-    marginBottom: 4,
-    marginTop: spacing.base * 1.625,
-  },
-
-  button: {
-    marginTop: 'auto',
+    marginBottom: 0,
   },
 });

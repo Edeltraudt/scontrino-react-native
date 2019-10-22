@@ -1,48 +1,51 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
-import { moderateScale } from 'react-native-size-matters';
+import { scale } from 'react-native-size-matters';
 
 import categories from '../../categories';
-import { colors } from '../style';
+import { colors, style, font } from '../style';
+import Icon from './Icon';
 
 export default class CategoryIcon extends React.Component {
   render() {
     const { fullWidth, fixed, code } = this.props;
+    const backgroundColor = categories[code].props.color;
 
     return (
       <View style={[
             styles.icon,
             (fullWidth ? styles.fullIcon : {}),
-            (fixed ? styles.fixedIcon : {}),
+            (fixed ? styles.fixedIcon : {backgroundColor}),
           ]}
-          backgroundColor={categories[code].props.color}
         >
-        {/* TODO: add icon */}
+          {/* <Icon name={code} /> */}
       </View>
     )
   }
 }
 
-const sizeS = moderateScale(42);
-const sizeM = moderateScale(50);
-const sizeL = moderateScale(58);
+const size = scale(48);
+const sizeL = font.size.expense;
 
 const styles = StyleSheet.create({
   icon: {
     backgroundColor: colors.base_soft,
-    borderRadius: 12,
-    height: sizeS,
-    marginBottom: sizeS * 0.25,
-    width: sizeS,
+    borderRadius: style.borderRadiusS,
+    height: size,
+    marginBottom: size * 0.25,
+    width: size,
   },
   fullIcon: {
-    height: sizeM,
     marginBottom: 0,
-    marginRight: sizeM * 0.5,
-    width: sizeM,
+    marginRight: size * 0.5,
   },
   fixedIcon: {
+    backgroundColor: '#00000033',
+    color: colors.invBase,
     height: sizeL,
+    marginBottom: sizeL * -0.125,
+    marginTop: sizeL * -0.075,
+    marginLeft: 'auto',
     width: sizeL,
   }
 });

@@ -39,11 +39,11 @@ export default class CategoryItem extends React.Component {
               styles.categoryTitle,
               (fixed ? styles.categoryTitle_fixed : {})
             ]}>{title}</Text>
-            <Text numberOfLines={1} style={[
+            <Text numberOfLines={2} style={[
               styles.categoryLabel,
               (fixed ? styles.categoryLabel_fixed : {})
             ]}>{label}</Text>
-            <Text numberOfLines={1} style={[
+            <Text numberOfLines={2} style={[
               styles.categoryHelp,
               (fixed ? styles.categoryHelp_fixed : {})
             ]}>{help}</Text>
@@ -58,9 +58,8 @@ const styles = StyleSheet.create({
   category: {
     backgroundColor: colors.base,
     borderRadius: style.borderRadius,
-    paddingLeft: spacing.base,
-    paddingRight: spacing.small,
-    paddingVertical: spacing.base,
+    padding: spacing.base,
+    paddingBottom: spacing.base * 1.5,
   },
   category_full: {
     alignItems: 'center',
@@ -78,6 +77,7 @@ const styles = StyleSheet.create({
     color: colors.text,
     fontFamily: font.family.bold,
     fontSize: font.size.base,
+    marginBottom: 2,
   },
   categoryTitle_fixed: {
     fontSize: font.size.base * 1.1,
@@ -86,15 +86,16 @@ const styles = StyleSheet.create({
   categoryLabel: {
     color: colors.text,
     fontSize: font.size.small,
+    marginBottom: font.size.base * 0.5,
   },
   categoryLabel_fixed: {
     fontSize: font.size.small * 1.125,
   },
 
   categoryHelp: {
-    color: colors.text_soft,
+    color: colors.textSoft,
     fontSize: font.size.xxsmall,
-    marginTop: font.size.xxsmall * 0.75,
+    marginTop: 'auto',
   },
   categoryHelp_fixed: {
     fontSize: font.size.xsmall,

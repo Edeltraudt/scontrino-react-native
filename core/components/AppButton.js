@@ -3,8 +3,9 @@ import { StyleSheet, View, Text, TouchableHighlight } from 'react-native';
 import { colors, style, font, spacing } from '../style';
 
 export const AppButtonType = Object.freeze({
-  default: 0,
-  soft: 1,
+  default: '',
+  soft: 'soft',
+  primary: 'primary',
 });
 
 export default class AppButton extends React.Component {
@@ -20,31 +21,34 @@ export default class AppButton extends React.Component {
     return (<View style={style}>
       <TouchableHighlight style={[
             styles.button,
-            type === AppButtonType.soft ? styles.button_soft : {},
+            type ? styles['button_' + type] : {},
             disabled ? styles.disabled : {},
           ]}
           disabled={disabled}
           onPress={this.handlePress}
-          underlayColor={type === AppButtonType.soft
-            ? colors.baseFocus
-            : colors.invBaseFocus}>
+          underlayColor={type ? underlayColors[type] : colors.invBaseFocus}>
         {this.props.children
           ? this.props.children
           : <Text style={[
             styles.text,
-            type === AppButtonType.soft ? styles.text_soft : {},
+            type ? styles['text_' + type] : {},
           ]}>{title}</Text>}
       </TouchableHighlight>
     </View>);
   }
 }
 
+const underlayColors = {
+  'soft': colors.baseFocus,
+  'primary': colors.primaryFocus,
+}
+
 const styles = StyleSheet.create({
   button: {
     backgroundColor: colors.invBase,
     borderRadius: style.borderRadiusS,
-    paddingTop: font.size.base * 0.8,
-    paddingBottom: font.size.base * 0.85,
+    paddingTop: font.size.base * 0.9,
+    paddingBottom: font.size.base * 0.95,
     paddingHorizontal: spacing.large,
   },
   text: {
@@ -63,6 +67,13 @@ const styles = StyleSheet.create({
   },
   text_soft: {
     color: colors.textSoft,
+  },
+
+  button_primary: {
+    backgroundColor: colors.primary,
+  },
+  text_primary: {
+    color: colors.invText,
   },
 });
 

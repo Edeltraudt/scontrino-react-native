@@ -3,9 +3,9 @@ export default categories = {
     code: 'basic',
     props: {
       color: '#2167FF',
-      colorText: '#FFF',
+      colorText: '#FFFFFF',
       colorLabel: '#D2E0FF',
-      colorLabelText: '#0029D6',
+      colorLabelText: '#2167FF',
 
       title: 'Basic',
       label: 'Living expenses',
@@ -15,10 +15,10 @@ export default categories = {
   ext: {
     code: 'ext',
     props: {
-      color: '#A8EB65',
-      colorText: '#126B00',
-      colorLabel: '#E9F6DC',
-      colorLabelText: '#71B82A',
+      color: '#26BE4F',
+      colorText: '#FFFFFF',
+      colorLabel: '#D3F2DC',
+      colorLabelText: '#26BE4F',
 
       title: 'Extended Basic',
       label: 'Lifestyle expenses',
@@ -28,10 +28,10 @@ export default categories = {
   luxury: {
     code: 'luxury',
     props: {
-      color: '#65EBD7',
-      colorText: '#00576B',
+      color: '#00B89C',
+      colorText: '#FFFFFF',
       colorLabel: '#DFF5F1',
-      colorLabelText: '#24889E',
+      colorLabelText: '#00B89C',
 
       title: 'Luxury',
       label: 'Happy fun times',
@@ -41,10 +41,10 @@ export default categories = {
   acq: {
     code: 'acq',
     props: {
-      color: '#F7DE39',
-      colorText: '#785504',
-      colorLabel: '#FEF9D7',
-      colorLabelText: '#CCB100',
+      color: '#E6644C',
+      colorText: '#FFFFFF',
+      colorLabel: '#FAE3DB',
+      colorLabelText: '#E6644C',
 
       title: 'Acquisition',
       label: 'One-time purchases',
@@ -54,12 +54,12 @@ export default categories = {
   work: {
     code: 'work',
     props: {
-      color: '#E6754C',
-      colorText: '#59130C',
-      colorLabel: '#FAE3DB',
-      colorLabelText: '#BF532C',
+      color: '#8D47A7',
+      colorText: '#FFFFFF',
+      colorLabel: '#E8DAED',
+      colorLabelText: '#8D47A7',
 
-      title: 'Occupation',
+      title: 'Work',
       label: 'Tax-deductibles',
       help: 'computers, books, trips',
     },

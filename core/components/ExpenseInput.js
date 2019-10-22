@@ -1,54 +1,60 @@
 import React from 'react';
 import { StyleSheet, View, Text, TextInput } from 'react-native';
-import { font, style } from '../style';
+import { font, style, spacing, colors } from '../style';
 import { moderateScale } from 'react-native-size-matters';
+import CategoryIcon from './CategoryIcon';
 
 export default class ExpenseInput extends React.Component {
   render() {
-    const { value, colorText } = this.props;
+    const { value, small, category } = this.props;
 
     return (
-      <View style={[
-          styles.container,
-          (this.props.small ? styles.container_small : {})
-        ]}
-        color={colorText}>
-      <View style={styles.expense}>
-        <Text style={[styles.currency, { color: colorText }]}>
-          €
-        </Text>
-        <TextInput style={styles.input}
-          color={colorText}
-          editable={false}
-          value={value} />
-      </View>
-    </View>
-);
+      <View style={styles.container}>
+        {!small &&
+          <Text style={styles.label} numberOfLines={2}>
+            How much did you spend?
+          </Text>}
+
+        <View style={styles.expense}>
+          <Text style={[styles.text, styles.currency]}>
+            €
+          </Text>
+          <TextInput style={[styles.text, styles.input]}
+            editable={false}
+            value={value} />
+
+          {category && <CategoryIcon code={category} fixed />}
+        </View>
+      </View>);
   }
 }
 
 const styles = StyleSheet.create({
   container: {
-    alignItems: 'center',
-    aspectRatio: moderateScale(3.75, -0.25), // 2.8
     justifyContent: 'center',
-    paddingBottom: font.size.base,
+    paddingBottom: moderateScale(20, 2),
+    paddingHorizontal: spacing.container,
   },
-  container_small: {
-    aspectRatio: moderateScale(5, -0.25), // 4.2
+  label: {
+    color: colors.invText,
+    fontSize: font.size.expense * 0.35,
+    fontFamily: font.family.bold,
+    marginBottom: font.size.expense * 0.35 * 0.25,
+    maxWidth: moderateScale(150, 0.5),
   },
   expense: {
     alignItems: 'center',
-    display: 'flex',
     flexDirection: 'row',
-    justifyContent: 'center',
+  },
+  text: {
+    color: colors.invText,
+    fontSize: font.size.expense,
   },
   input: {
-    fontSize: font.size.expense,
     fontFamily: font.family.bold,
   },
   currency: {
-    fontSize: font.size.expense,
+    color: colors.invText,
     fontFamily: font.family.base,
     opacity: style.opacitySoft,
   },
