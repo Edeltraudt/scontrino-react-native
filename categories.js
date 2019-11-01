@@ -1,4 +1,4 @@
-export default categories = {
+export const categories = {
   basic: {
     code: 'basic',
     props: {

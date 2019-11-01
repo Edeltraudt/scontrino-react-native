@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 
-import categories from './../../categories';
+import { categories } from './../../categories';
 import CategoryItem from './CategoryItem';
 
 export default class CategorySelect extends React.Component {

@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, TextInput, View, SafeAreaView } from 'react-native';
 import { moderateScale } from 'react-native-size-matters';
 
-import categories from '../../categories';
+import { categories } from '../../categories';
 import { isToday } from '../helpers';
 import { spacing, colors, font, style } from '../style';
 
@@ -14,7 +14,7 @@ import LabelInput from '../components/LabelInput';
 import ExpenseInput from '../components/ExpenseInput';
 import AppButton, { AppButtonType } from '../components/AppButton';
 
-export default class NewExpenseView extends React.Component {
+export default class NewExpenseScreen extends React.Component {
   steps = 4;
 
   constructor(props) {
@@ -74,7 +74,7 @@ export default class NewExpenseView extends React.Component {
 
   handlePrevious = () => {
     if (this.state.step === 1) {
-      // exit new expense input view
+      this.props.navigation.goBack();
     } else {
       this.setState({ step: this.state.step - 1});
     }

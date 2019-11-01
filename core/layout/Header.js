@@ -1,11 +1,11 @@
 import React from 'react';
 import { SafeAreaView, View, StyleSheet, TouchableOpacity, Text } from 'react-native';
-import { style, spacing, colors, font } from '../style';
+import { spacing, colors, font } from '../style';
 import Icon from '../components/Icon';
 
 export default class Header extends React.Component {
   render() {
-    const {title, onBack, notification } = this.props;
+    const {onBack, notification } = this.props;
 
     return (
       <SafeAreaView>

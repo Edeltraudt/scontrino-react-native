@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { scale } from 'react-native-size-matters';
 
-import categories from '../../categories';
+import { categories } from '../../categories';
 import { colors, style, font } from '../style';
 import Icon from './Icon';
 

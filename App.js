@@ -1,11 +1,25 @@
 import React from 'react';
-import { Animated, Dimensions, Keyboard, StyleSheet, Text, StatusBar, TextInput, UIManager } from 'react-native';
+import { Animated, Dimensions, Keyboard, StyleSheet, Text, StatusBar, TextInput, UIManager, AsyncStorage } from 'react-native';
 import * as Font from 'expo-font';
+import { createAppContainer } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation-stack';
 
-import NewExpenseView from './core/views/NewExpenseView';
-import { COLOR_BASE_SOFT } from './core/style';
+import NewExpense from './core/screens/NewExpense';
+import Auth from './core/screens/Auth';
+import { colors } from './core/style';
 
 const { State: TextInputState } = TextInput;
+
+const AppNavigator = createStackNavigator({
+    Auth, NewExpense,
+  }, {
+  initialRouteName: 'Auth',
+  defaultNavigationOptions: {
+    header: null,
+  },
+});
+
+const AppContainer = createAppContainer(AppNavigator);
 
 export default class App extends React.Component {
   constructor(props) {
@@ -13,6 +27,7 @@ export default class App extends React.Component {
     this.state = {
       isLoading: true,
       shift: new Animated.Value(0),
+      id: null,
     };
   }
 
@@ -23,7 +38,7 @@ export default class App extends React.Component {
       'IBMPlexSans-Light': require('./assets/fonts/IBMPlexSans-Light.ttf'),
       'IBMPlexSans-SemiBold': require('./assets/fonts/IBMPlexSans-SemiBold.ttf'),
     });
-    this.setState({ isLoading: false });
+    this.setState({isLoading: false});
   }
 
   componentWillUnmount() {
@@ -37,7 +52,8 @@ export default class App extends React.Component {
     return !this.state.isLoading
       ? <Animated.View style={[styles.view, {transform: [{translateY: shift}]}]}>
           <StatusBar barStyle='light-content' />
-          <NewExpenseView />
+
+          <AppContainer />
         </Animated.View>
       : <><Text>Loading</Text></>;
   }
@@ -78,7 +94,7 @@ export default class App extends React.Component {
 
 const styles = StyleSheet.create({
   view: {
-    backgroundColor: COLOR_BASE_SOFT,
+    backgroundColor: colors.baseSoft,
     flex: 1,
   },
 });
